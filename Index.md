@@ -5,4 +5,4 @@ title: About
 
 
 ## Welcome!
-This is the about page
+This is the home page
