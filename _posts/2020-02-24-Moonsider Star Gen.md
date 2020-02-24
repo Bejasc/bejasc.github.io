@@ -1,7 +1,10 @@
 ---
 layout: post
 title: Moonsider- Galaxy Generation (Part I)
+excerpt: A couple of days ago, I thought I'd throw together some ideas of creating a galaxy in Unity for one of my current projects, Moonsider...
 ---
+
+![Generated Spiral Galaxy](https://media.discordapp.net/attachments/85593628650504192/679646988660375562/unknown.png?width=527&height=503)
 
 ## To Infinity..
 
@@ -98,4 +101,4 @@ I've done some [reading](http://jongware.com/galaxy1.html) on an approach that's
 I've already got a working implementation of the rolling bit rotation based name generation, but more on that next time! 
 Planning on doing some work between now and then (When?) on the above, and I'll report back when I've got something more exciting to show!
 
->>B.
+### \>B.
