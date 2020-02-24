@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Moonsider:: Galaxy Generation
+title: Moonsider- Galaxy Generation (Part I)
 ---
 
-##To Infinity..
+## To Infinity..
 
 A couple of days ago, I thought I'd throw together some ideas of creating a galaxy in Unity for one of my current projects, Moonsider. 
 I did some research, seeing what assets were already available, finding articles on other implementations people have tried, and generally immersing myself in the Science Fiction themes again. 
@@ -21,7 +21,7 @@ In secret, part of the reason I do this, is because I know I will forget how thi
 Knowing roughly what I needed to do, I set out pretty quickly using my 'trial and error' approach. More often than not, it ends in burn-out and frustration. But for this system, it came together fairly well, other than a few key frustrations I had along the way. 
 
 
-###Arm Ends
+### Arm Ends
 First off, I started with creating the arms. 
 Three things were known. The center point, the arm reach, and the number of arms.
 It was quite easy to loop over the number of desired arms, find the distance needed between each arm, and extend them out for as far as they should reach, so that's exactly what I've done. 
@@ -30,7 +30,7 @@ I have made the assumption that the galaxy is flat (no Z variation) - so this wa
 {Image of galaxy arms}
 
 
-###Star distribution
+### Star distribution
 So, how are the number of stars split between the number of arms? Well, for this part in particular, I haven't gone with exact figures. I wanted a little more randomness, a bit of 'fuzz', for how many stars were present in an arm. In the end, it doesn't really matter all that much, as things are twisted and skewed to the point that you couldn't tell which arm a star belonged to anyway. 
 
 To start with, I do find roughly the amount of stars that should be present in each arm. 100 stars across 4 arms, 25 stars. Simple. I wanted this to look a little more random, 29/22/26/23 across each arm - something like that. 
@@ -39,7 +39,7 @@ What I've done to acheive this, is find an upperLimit and lowerLimit - which is 
 For those of you who are keen on math, you'll quickly recognise that the _actual_ number of stars may never add up to the total (or even be over) the _desired_ amount of stars. I have chosen to view this as not being a problem. It's something I'm more happy to hide behind an enum of 'Galaxy Size' - where 'Large' might be 150-200 Stars, so anything in that range is perfectly acceptable.
 
 
-###Star Spread
+### Star Spread
 This is where things get a little more interesting. Of course, I already mentioned that I wanted the stars to be more common towards the core of the galaxy. An [Animation Curve](https://docs.unity3d.com/ScriptReference/AnimationCurve.html) was perfect for this, as it becomes something that is entirely customizable inside the editor, and there's no complicated maths that's involved. For placing the stars closer to the cetner, all I had to do was multiply the armReach by a value on this curve.
 
 This was enough to place the stars out at random points along the lines, but they were all still very.. linear. 
@@ -54,7 +54,7 @@ As I mentioned before, it's a 2D planar galaxy, so the Z position was forcefully
 {Image of star distribution}
 
 
-###A problem occurs
+### A problem occurs
 However, this is where things are falling apart for me a _little bit_. Using this method, there seems to be the odd star that is placed _way out of line_ - even behind, sometimes. 
 I'm still trying to understand the solution I have created, to see if I can minimise this, because it actually starts to have a flow on effect to the next steps, spinning the galaxy. 
 
@@ -62,7 +62,7 @@ I've tried a few things, shifting around parts of the forumalae, isolating this 
 Out of about 100 stars, it seems to only happen for a pretty small percentage of stars, but is a little frustrating, because the stars are _more than a little_ out of whack. 
 
 
-###You spin my heard right round..
+### You spin my heard right round..
 This is where the fun begins.. 
 With the stars properly spread closer to the core/center of the arms, which I'm _reasonably_ happy with (other than the small issue above), it was time to twist the galaxy so it looked a little more like a spiral, rather than a bicycle wheel with missing spokes. 
 
@@ -79,26 +79,23 @@ I exhausted quite a few solutions I found around Unity Answers and Stack Overflo
 
 In the end, I reached out on a Discord server with my simple understanding of what needed to happen, and was helped with some maths that I struggle to understand. I really should have paid attention in Trigonometry. 
 
-{Image explaining issue}
+![My simple understanding](https://media.discordapp.net/attachments/85593628650504192/679645243888631824/unknown.png?width=593&height=683)
 
 It worked! I was able to retreive the result I wanted, and other than the misplaced stars, I am now very happy with this solution!
 
 
-##And Beyond!
+## And Beyond!
 Well, I now have a `Dictionary<int,List<Vector3>>` which is providing me with a nice clean pattern of which stars are in which arms. 
 I have a well presented and well documented editor that allows for different kinds of generation, and I've also overwridden Random to use a text-based seed, so that identical results can be produced if desired. (And I do desire it!)
 
 There's still a little more work I want to do with the Random seed, mostly in creating a helper function and properly override the method, so that I can call it from anywhere, and feed a single seed to get the _same_ 'random results' each time.
 
-but for the galaxy generation... where to next?
+But for the galaxy generation... where to next?
 
 Next up, I need to generate the individual stars names, temperatures, sizes, and all of that jazz.
-I've done some reading on an approach that's used in one of the earlier Elite names, which does some fancy stuff so that none of this information is ever _stored_ - it is all calculated at runtime, based on nothing but the coordinate of the star.
-
-It's a very smart approach, and something I've already started playing around with. 
-The article has plenty of gold on offer, and is a great read! Some of the concepts are a little old, as it's all written with c++, and some older, less familiar concepts.
+I've done some [reading](http://jongware.com/galaxy1.html) on an approach that's used in one of the earlier Elite titles, which does some fancy stuff so that none of this information is ever _stored_ - it is all calculated at runtime, based on nothing but the coordinate of the star.
 
 I've already got a working implementation of the rolling bit rotation based name generation, but more on that next time! 
 Planning on doing some work between now and then (When?) on the above, and I'll report back when I've got something more exciting to show!
 
->B.
+>>B.
