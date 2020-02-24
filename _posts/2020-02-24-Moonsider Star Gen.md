@@ -41,6 +41,8 @@ What I've done to acheive this, is find an upperLimit and lowerLimit - which is 
 
 For those of you who are keen on math, you'll quickly recognise that the _actual_ number of stars may never add up to the total (or even be over) the _desired_ amount of stars. I have chosen to view this as not being a problem. It's something I'm more happy to hide behind an enum of 'Galaxy Size' - where 'Large' might be 150-200 Stars, so anything in that range is perfectly acceptable.
 
+Both this realization, and the math itself behind understanding the "fuzziness" were helped by a long-time friend of mine, and I'm very appreciative of his efforts and patience in explaining concepts to me that I'm sure are simple to most! 
+He's working on some of his own games, and has a fascination with the mathemeatical side of gamedev, and manipulating numbers through code. 
 
 ### Star Spread
 This is where things get a little more interesting. Of course, I already mentioned that I wanted the stars to be more common towards the core of the galaxy. An [Animation Curve](https://docs.unity3d.com/ScriptReference/AnimationCurve.html) was perfect for this, as it becomes something that is entirely customizable inside the editor, and there's no complicated maths that's involved. For placing the stars closer to the cetner, all I had to do was multiply the armReach by a value on this curve.
