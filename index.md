@@ -4,7 +4,6 @@ title: Home
 
 ## Welcome!
 
-<img style="float: left;" src="https://media.licdn.com/dms/image/C5103AQHQ3nlKKQHO2w/profile-displayphoto-shrink_200_200/0?e=1580342400&v=beta&t=GJtPGrO9kmiKgGtdERr9v4PPjGOlK5XdR3-1pAkxU6E">
 My name is Ben, and I'm a software developer. I have a passion for creating data driven games and applications, that also are as customizable and 'moddable' as the user would like them to be.
 
 Creating a product is one thing, but the ability to have potentially endless content created for that product is what I belive, really makes a product flourish. Look at Skyrim for example. Years ago now it was released, and still tens of thousands of people play it! Why? Mods!
